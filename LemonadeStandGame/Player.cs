@@ -23,9 +23,18 @@ namespace LemonadeStandGame
             numberIce = 0;
         }
 
-        public void buyProduct()
+        public void BuyProduct()
         {
-            Console.WriteLine($"You currently have {numberLemons} lemons. Would you like to buy more?");
+            List<string> optionsStr = new List<string> { "yes", "no", "y", "n" };
+            string yesNo = UserInterface.ValidateStringInput($"You currently have {numberLemons} lemons. Would you like to buy more? y/n", optionsStr);
+            if (yesNo == "y" || yesNo == "yes")
+            {
+                Console.WriteLine(yesNo);
+            }
+            else
+            {
+                Console.WriteLine(yesNo);
+            }
         }
     }
 }

@@ -6,7 +6,7 @@
         {
             Store.SetPrices();
             Player amy = new Player();
-            amy.buyProduct();
+            amy.BuyProduct();
         }
     }
 }
