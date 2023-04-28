@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-
+            Store.SetPrices();
+            Player amy = new Player();
+            amy.buyProduct();
         }
     }
 }

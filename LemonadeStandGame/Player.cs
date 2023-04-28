@@ -25,7 +25,7 @@ namespace LemonadeStandGame
 
         public void buyProduct()
         {
-
+            Console.WriteLine($"You currently have {numberLemons} lemons. Would you like to buy more?");
         }
     }
 }
