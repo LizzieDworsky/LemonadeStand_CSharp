@@ -25,15 +25,17 @@ namespace LemonadeStandGame
 
         public void BuyProduct()
         {
-            List<string> optionsStr = new List<string> { "yes", "no", "y", "n" };
-            string yesNo = UserInterface.ValidateStringInput($"You currently have {numberLemons} lemons. Would you like to buy more? y/n", optionsStr);
-            if (yesNo == "y" || yesNo == "yes")
+            List<char> yNOptions = new List<char> { 'y', 'n' };
+            char yesNo = UserInterface.ValidateCharInput($"You currently have {numberLemons} lemons. Would you like to buy more? y/n", yNOptions);
+            if (yesNo == 'y')
             {
-                Console.WriteLine(yesNo);
-            }
-            else
-            {
-                Console.WriteLine(yesNo);
+                int number = UserInterface.ValidateIntInput("How many lemons would you like to buy?");
+                double total = number * Store.lemonCost;
+                if (total < money)
+                {
+                    Console.WriteLine(total);
+                    Console.WriteLine(UserInterface.FormatDouble(total));
+                }
             }
         }
     }

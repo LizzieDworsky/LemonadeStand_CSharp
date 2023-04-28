@@ -8,16 +8,36 @@ namespace LemonadeStandGame
 {
     internal static class UserInterface
     {
-        public static string ValidateStringInput(string prompt, List<string> options)
+        public static char ValidateCharInput(string prompt, List<char> options)
         {
             Console.WriteLine(prompt);
             string input = Console.ReadLine().ToLower();
-            while (options.Contains(input) == false)
+            char result;
+            while (char.TryParse(input, out result) == false || options.Contains(result) == false)
             {
-                Console.WriteLine($"Sorry {input} was not a valid options, please try again.");
+                Console.WriteLine($"Sorry {input} was not a valid option, please try again.");
                 input = Console.ReadLine().ToLower();
             }
-            return input;
+            return result;
+        }
+
+        public static int ValidateIntInput(string prompt)
+        {
+            Console.WriteLine(prompt);
+            string input = Console.ReadLine();
+            int result;
+            while (int.TryParse(input, out result) == false)
+            {
+                Console.WriteLine($"Sorry {input} was not a valid option, please try again.");
+                input = Console.ReadLine();
+            }
+            return result;
+        }
+
+        public static string FormatDouble(double toFormat)
+        {
+            string formatted = toFormat.ToString("0.00");
+            return formatted;
         }
     }
 }
