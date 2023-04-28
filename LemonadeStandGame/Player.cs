@@ -29,12 +29,22 @@ namespace LemonadeStandGame
             char yesNo = UserInterface.ValidateCharInput($"You currently have {numberLemons} lemons. Would you like to buy more? y/n", yNOptions);
             if (yesNo == 'y')
             {
-                int number = UserInterface.ValidateIntInput("How many lemons would you like to buy?");
-                double total = number * Store.lemonCost;
-                if (total < money)
+                bool tryAgain = true;
+                while (tryAgain)
                 {
-                    Console.WriteLine(total);
-                    Console.WriteLine(UserInterface.FormatDouble(total));
+                    int number = UserInterface.ValidateIntInput("How many lemons would you like to buy?");
+                    double total = number * Store.lemonCost;
+                    if (total < money)
+                    {
+                        tryAgain = false;
+                        money -= total;
+                        numberLemons += number;
+                        Console.WriteLine($"You bought {number} lemons for {UserInterface.FormatDouble(total)}. You now have ${UserInterface.FormatDouble(money)} and {numberLemons} lemons.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Sorry, that would cost {UserInterface.FormatDouble(total)} and you only have {UserInterface.FormatDouble(money)}");
+                    }
                 }
             }
         }
