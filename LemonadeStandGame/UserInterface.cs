@@ -34,6 +34,19 @@ namespace LemonadeStandGame
             return result;
         }
 
+        public static double ValidateDoubleInput(string prompt)
+        {
+            Console.WriteLine(prompt);
+            string input = Console.ReadLine();
+            double result;
+            while (double.TryParse(input, out result) == false)
+            {
+                Console.WriteLine($"Sorry {input} was not a valid option, please try again.");
+                input = Console.ReadLine();
+            }
+            return result;
+        }
+
         public static string FormatDouble(double toFormat)
         {
             string formatted = toFormat.ToString("0.00");

@@ -62,7 +62,7 @@ namespace LemonadeStandGame
             }
             Console.WriteLine("Would you like to change your recipe?");
             List<char> yNOptions = new List<char> { 'y', 'n' };
-            char yesNo = UserInterface.ValidateCharInput($"You currently have {numberLemons} lemons. Would you like to buy more? y/n", yNOptions);
+            char yesNo = UserInterface.ValidateCharInput($"You currently are using {numberLemons} lemons. Would you like to adjust this? y/n", yNOptions);
             if (yesNo == 'y')
             {
                 int number = UserInterface.ValidateIntInput("How many lemons would you like to use?");
@@ -77,7 +77,13 @@ namespace LemonadeStandGame
 
         public void SetPrice()
         {
-            Console.WriteLine($"Your lemonade currently costs ${pricePerCup} per cup");
+            List<char> yNOptions = new List<char> { 'y', 'n' };
+            char yesNo = UserInterface.ValidateCharInput($"Your lemonade currently costs ${pricePerCup} per cup. Would you like to adjust your price? y/n", yNOptions);
+            if (yesNo == 'y')
+            {
+                pricePerCup = UserInterface.ValidateDoubleInput("What price would you like to make each cup?");
+                Console.WriteLine($"Your lemonade now costs ${UserInterface.FormatDouble(pricePerCup)} per cup.");
+            }
         }
 
     }
