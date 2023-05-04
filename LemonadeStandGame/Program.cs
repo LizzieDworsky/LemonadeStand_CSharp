@@ -8,7 +8,8 @@
             Console.WriteLine(WeatherPrediction.ActualWeather());
             Store.SetPrices();
             Player amy = new Player();
-            amy.BuyProduct();
+            amy.SetRecipe();
+            amy.SetPrice();
         }
     }
 }

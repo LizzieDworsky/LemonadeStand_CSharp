@@ -13,6 +13,8 @@ namespace LemonadeStandGame
         public int numberSugar;
         public int numberCups;
         public int numberIce;
+        public double pricePerCup;
+        public Dictionary<string, int> recipe;
 
         public Player()
         {
@@ -21,6 +23,8 @@ namespace LemonadeStandGame
             numberSugar = 0; 
             numberCups = 0;
             numberIce = 0;
+            pricePerCup = 0.25;
+            recipe = new Dictionary<string, int> { { "Lemons", 0 } };
         }
 
         public void BuyProduct()
@@ -48,5 +52,33 @@ namespace LemonadeStandGame
                 }
             }
         }
+
+        public void SetRecipe()
+        {
+            Console.WriteLine("Your current recipe for lemonade is:");
+            foreach (KeyValuePair<string, int> kvp in recipe)
+            {
+                Console.WriteLine("{1} {0}", kvp.Key, kvp.Value);
+            }
+            Console.WriteLine("Would you like to change your recipe?");
+            List<char> yNOptions = new List<char> { 'y', 'n' };
+            char yesNo = UserInterface.ValidateCharInput($"You currently have {numberLemons} lemons. Would you like to buy more? y/n", yNOptions);
+            if (yesNo == 'y')
+            {
+                int number = UserInterface.ValidateIntInput("How many lemons would you like to use?");
+                recipe["Lemons"] = number;
+                Console.WriteLine("Your new recipe is:");
+                foreach (KeyValuePair<string, int> kvp in recipe)
+                {
+                    Console.WriteLine("{1} {0}", kvp.Key, kvp.Value);
+                }
+            }
+        }
+
+        public void SetPrice()
+        {
+            Console.WriteLine($"Your lemonade currently costs ${pricePerCup} per cup");
+        }
+
     }
 }

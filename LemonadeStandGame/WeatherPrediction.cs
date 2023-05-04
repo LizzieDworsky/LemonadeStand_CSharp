@@ -10,7 +10,8 @@ namespace LemonadeStandGame
     {
         private static Random rand = new Random();
         private static int predictionTemp;
-        private static string predictionCond;
+        public static string weatherCond;
+        public static int actualTemp;
 
         private static int GetTemperature(int tempFloor, int tempCeiling)
         {
@@ -37,14 +38,14 @@ namespace LemonadeStandGame
         public static string Forecast()
         {
             predictionTemp = GetTemperature(65, 87);
-            predictionCond = GetConditions();
-            return $"Tomorrow's conditions are forecasted to be {predictionTemp} and {predictionCond}";
+            weatherCond = GetConditions();
+            return $"Tomorrow's conditions are forecasted to be {predictionTemp} and {weatherCond}";
         }
 
         public static string ActualWeather()
         {
-            int actualTemp = GetTemperature(predictionTemp-5, predictionTemp+5);
-            return $"Today's weather is {actualTemp} and {predictionCond}";
+            actualTemp = GetTemperature(predictionTemp-5, predictionTemp+5);
+            return $"Today's weather is {actualTemp} and {weatherCond}";
         }
 
     }
