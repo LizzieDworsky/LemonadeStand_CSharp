@@ -7,9 +7,8 @@
             Console.WriteLine(WeatherPrediction.Forecast());
             Console.WriteLine(WeatherPrediction.ActualWeather());
             Store.SetPrices();
-            Player amy = new Player();
-            amy.SetRecipe();
-            amy.SetPrice();
+            Customer josh = new Customer();
+            Console.WriteLine(josh.PurchaseLemonade());
         }
     }
 }
