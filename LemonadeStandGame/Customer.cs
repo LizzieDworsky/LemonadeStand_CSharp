@@ -19,7 +19,9 @@ namespace LemonadeStandGame
 
         public bool PurchaseLemonade()
         {
+            CustomerInterface.RandomizeCustomer(trueFalse);
             return trueFalse[rand.Next(trueFalse.Count)];
         }
+        
     }
 }
