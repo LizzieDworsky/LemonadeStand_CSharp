@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dworsky\\Desktop\\SoftwareDevelopment\\devCodeCamp_employee\\C#\\Projects\\LemonadeStandGame\\LemonadeStandGame\\LemonadeStandGame\\LemonadeStandGame.csproj",
+      "projectUniqueName": "C:\\Users\\Dworsky\\Desktop\\SoftwareDevelopment\\devCodeCamp_employee\\CSharp\\Projects\\LemonadeStandGame\\LemonadeStandGame\\LemonadeStandGame\\LemonadeStandGame.csproj",
       "projectName": "LemonadeStandGame",
-      "projectPath": "C:\\Users\\Dworsky\\Desktop\\SoftwareDevelopment\\devCodeCamp_employee\\C#\\Projects\\LemonadeStandGame\\LemonadeStandGame\\LemonadeStandGame\\LemonadeStandGame.csproj",
+      "projectPath": "C:\\Users\\Dworsky\\Desktop\\SoftwareDevelopment\\devCodeCamp_employee\\CSharp\\Projects\\LemonadeStandGame\\LemonadeStandGame\\LemonadeStandGame\\LemonadeStandGame.csproj",
       "packagesPath": "C:\\Users\\Dworsky\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dworsky\\Desktop\\SoftwareDevelopment\\devCodeCamp_employee\\C#\\Projects\\LemonadeStandGame\\LemonadeStandGame\\LemonadeStandGame\\obj\\",
+      "outputPath": "C:\\Users\\Dworsky\\Desktop\\SoftwareDevelopment\\devCodeCamp_employee\\CSharp\\Projects\\LemonadeStandGame\\LemonadeStandGame\\LemonadeStandGame\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dworsky\\AppData\\Roaming\\NuGet\\NuGet.Config",

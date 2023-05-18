@@ -8,36 +8,26 @@ namespace LemonadeStandGame
 {
     internal static class CustomerInterface
     {
-        private static List<string> customerType = new List<string> { "picky", "choosy", "average", "friendly", "kind" };
         private static Random rand = new Random();
+        
 
-        public static void RandomizeCustomer(List<bool> custTrueFalse)
+        public static void RandomizeCustomer()
         {
-            string custPersonality = customerType[rand.Next(customerType.Count)];
-            if (custPersonality == "picky")
+            int customerProbability = 0;
+            int number = rand.Next(2);
+            if (number == 0)
             {
-                custTrueFalse.Add(false);
-                custTrueFalse.Add(false);
+                customerProbability = rand.Next(10, 20);
             }
-            else if (custPersonality == "choosy")
+            else if (number == 1)
             {
-                custTrueFalse.Add(false);
+                customerProbability = rand.Next(20, 30);
             }
-            else if (custPersonality == "friendly")
+            if (WeatherPrediction.weatherCond == "sunny")
             {
-                custTrueFalse.Add(true);
+                customerProbability += rand.Next(15, 25);
             }
-            else if (custPersonality == "kind")
-            {
-                custTrueFalse.Add(true);
-                custTrueFalse.Add(true);
-            }
-            else
-            {
-                bool additionalOption = custTrueFalse[rand.Next(custTrueFalse.Count)];
-                custTrueFalse.Add(additionalOption);
-            }
-
+            Console.WriteLine(customerProbability);
         }
 
     }
