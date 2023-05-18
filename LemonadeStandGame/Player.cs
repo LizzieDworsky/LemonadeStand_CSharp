@@ -57,24 +57,34 @@ namespace LemonadeStandGame
 
         public void SetRecipe()
         {
-            Console.WriteLine("Your current recipe for lemonade is:");
-            foreach (KeyValuePair<string, int> kvp in recipe)
+            bool condition = true;
+            while (condition)
             {
-                Console.WriteLine("{1} {0}", kvp.Key, kvp.Value);
-            }
-            Console.WriteLine("Would you like to change your recipe?");
-            List<char> yNOptions = new List<char> { 'y', 'n' };
-            char yesNo = UserInterface.ValidateCharInput($"You currently are using {numberLemons} lemons. Would you like to adjust this? y/n", yNOptions);
-            if (yesNo == 'y')
-            {
-                int number = UserInterface.ValidateIntInput("How many lemons would you like to use?");
-                recipe["Lemons"] = number;
-                Console.WriteLine("Your new recipe is:");
+                Console.WriteLine("Your current recipe for lemonade is:");
                 foreach (KeyValuePair<string, int> kvp in recipe)
                 {
                     Console.WriteLine("{1} {0}", kvp.Key, kvp.Value);
                 }
+                List<char> yNOptions = new List<char> { 'y', 'n' };
+                char yesNo = UserInterface.ValidateCharInput("Would you like to change your recipe?", yNOptions);
+                if (yesNo == 'y')
+                {
+                    foreach (KeyValuePair<string, int> kvp in recipe)
+                    {
+                        yesNo = UserInterface.ValidateCharInput($"You currently are using {kvp.Value} {kvp.Key}. Would you like to adjust this? y/n", yNOptions);
+                        if (yesNo == 'y')
+                        {
+                            int number = UserInterface.ValidateIntInput($"How many {kvp.Key} would you like to use?");
+                            recipe[kvp.Key] = number;
+                        }
+                    }
+                }
+                else
+                {
+                    condition = false;
+                }
             }
+            
         }
 
         public void SetPrice()

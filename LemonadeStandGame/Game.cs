@@ -27,6 +27,8 @@ namespace LemonadeStandGame
         {
             Console.WriteLine(WeatherPrediction.Forecast());
             RunPurchases();
+            player.SetRecipe();
+            player.SetPrice();
         }
 
         private void DisplayWelcome()
