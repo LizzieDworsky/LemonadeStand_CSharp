@@ -17,11 +17,11 @@ namespace LemonadeStandGame
             int number = rand.Next(2);
             if (number == 0)
             {
-                customerProbability = rand.Next(20, 30);
+                customerProbability = rand.Next(25, 35);
             }
             else if (number == 1)
             {
-                customerProbability = rand.Next(30, 40);
+                customerProbability = rand.Next(35, 45);
             }
             if (weatherCond == "sunny")
             {
@@ -31,11 +31,11 @@ namespace LemonadeStandGame
             {
                 customerProbability += 15;
             }
-            if (currentTemp <= 70)
+            if (currentTemp < 70)
             {
                 customerProbability -= rand.Next(5, 10);
             }
-            else if (currentTemp <= 80)
+            else if (currentTemp < 80)
             {
                 customerProbability += rand.Next(5, 10);
             }

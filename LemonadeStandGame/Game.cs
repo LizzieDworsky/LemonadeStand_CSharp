@@ -55,7 +55,7 @@ namespace LemonadeStandGame
                 for (int i = 0; i < 6; i++)
                 {
                     Customer customer = new Customer();
-                    customer.PurchaseLemonade(player.pricePerCup, weatherTemp, weatherCondition);
+                    Console.WriteLine(customer.PurchaseLemonade(player.pricePerCup, weatherTemp, weatherCondition));
                 }
             }
             else if (weatherCondition == "cloudy" || weatherCondition == "windy")
@@ -63,7 +63,7 @@ namespace LemonadeStandGame
                 for (int i = 0; i < 11; i++)
                 {
                     Customer customer = new Customer();
-                    customer.PurchaseLemonade(player.pricePerCup, weatherTemp, weatherCondition);
+                    Console.WriteLine(customer.PurchaseLemonade(player.pricePerCup, weatherTemp, weatherCondition));
                 }
             }
             else
@@ -71,7 +71,7 @@ namespace LemonadeStandGame
                 for (int i = 0; i < 16; i++)
                 {
                     Customer customer = new Customer();
-                    customer.PurchaseLemonade(player.pricePerCup, weatherTemp, weatherCondition);
+                    Console.WriteLine(customer.PurchaseLemonade(player.pricePerCup, weatherTemp, weatherCondition));
                 }
             }
         }

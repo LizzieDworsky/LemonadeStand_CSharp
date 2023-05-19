@@ -14,16 +14,24 @@ namespace LemonadeStandGame
         public Customer()
         {
             rand = new Random();
-            trueFalse = new List<bool>{ true, false};
+            trueFalse = new List<bool>{ true, false };
         }
 
         public bool PurchaseLemonade(double lemonadePrice, int currentTemp, string weatherCond)
         {
             int customerProbability = CustomerInterface.RandomizeCustomer(lemonadePrice, currentTemp, weatherCond);
-
-
-            return trueFalse[rand.Next(trueFalse.Count)];
+            if (customerProbability >= 80)
+            {
+                return true;
+            }
+            else if (customerProbability <= 20)
+            {
+                return false;
+            }
+            else
+            {
+                return trueFalse[rand.Next(trueFalse.Count)];
+            }
         }
-
     }
 }
