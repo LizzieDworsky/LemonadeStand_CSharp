@@ -17,13 +17,13 @@ namespace LemonadeStandGame
             //Console.WriteLine("Please enter your username:");
             //string username = Console.ReadLine();
             player = new Player("Lizzie");
-            daysOfWeek = new string[7] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+            daysOfWeek = new string[8] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday" };
         }
 
         public void RunGame()
         {
             DisplayWelcome();
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 8; i++)
             {
                 RunEachDay(i-1);
             }
@@ -44,6 +44,36 @@ namespace LemonadeStandGame
             RunPurchases();
             player.SetRecipe();
             player.SetPrice();
+            Console.WriteLine(WeatherPrediction.ActualWeather());
+            CreateCustomersBuyLemonade(WeatherPrediction.weatherCond, WeatherPrediction.actualTemp);
+        }
+
+        private void CreateCustomersBuyLemonade(string weatherCondition, int weatherTemp)
+        {
+            if (weatherCondition == "rainy" || weatherCondition == "stormy")
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    Customer customer = new Customer();
+                    customer.PurchaseLemonade(player.pricePerCup, weatherTemp, weatherCondition);
+                }
+            }
+            else if (weatherCondition == "cloudy" || weatherCondition == "windy")
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    Customer customer = new Customer();
+                    customer.PurchaseLemonade(player.pricePerCup, weatherTemp, weatherCondition);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 16; i++)
+                {
+                    Customer customer = new Customer();
+                    customer.PurchaseLemonade(player.pricePerCup, weatherTemp, weatherCondition);
+                }
+            }
         }
 
         private void DisplayWelcome()

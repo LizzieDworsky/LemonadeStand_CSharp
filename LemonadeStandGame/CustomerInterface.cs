@@ -11,23 +11,39 @@ namespace LemonadeStandGame
         private static Random rand = new Random();
         
 
-        public static void RandomizeCustomer(double lemonadePrice)
+        public static int RandomizeCustomer(double lemonadePrice, int currentTemp, string weatherCond)
         {
             int customerProbability = 0;
             int number = rand.Next(2);
             if (number == 0)
             {
-                customerProbability = rand.Next(10, 20);
+                customerProbability = rand.Next(20, 30);
             }
             else if (number == 1)
             {
-                customerProbability = rand.Next(20, 30);
+                customerProbability = rand.Next(30, 40);
             }
-            if (WeatherPrediction.weatherCond == "sunny")
+            if (weatherCond == "sunny")
             {
-                customerProbability += rand.Next(15, 25);
+                customerProbability += 30;
             }
-            Console.WriteLine(customerProbability);
+            else if (weatherCond == "cloudy" || weatherCond == "windy")
+            {
+                customerProbability += 15;
+            }
+            if (currentTemp <= 70)
+            {
+                customerProbability -= rand.Next(5, 10);
+            }
+            else if (currentTemp <= 80)
+            {
+                customerProbability += rand.Next(5, 10);
+            }
+            else
+            {
+                customerProbability += rand.Next(15, 20);
+            }
+            return customerProbability;
         }
 
     }

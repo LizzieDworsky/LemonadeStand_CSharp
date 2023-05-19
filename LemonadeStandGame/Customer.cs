@@ -17,9 +17,11 @@ namespace LemonadeStandGame
             trueFalse = new List<bool>{ true, false};
         }
 
-        public bool PurchaseLemonade(double lemonadePrice)
+        public bool PurchaseLemonade(double lemonadePrice, int currentTemp, string weatherCond)
         {
-            CustomerInterface.RandomizeCustomer(lemonadePrice);
+            int customerProbability = CustomerInterface.RandomizeCustomer(lemonadePrice, currentTemp, weatherCond);
+
+
             return trueFalse[rand.Next(trueFalse.Count)];
         }
 
