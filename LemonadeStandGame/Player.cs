@@ -21,12 +21,12 @@ namespace LemonadeStandGame
         {
             username = name;
             money = 45;
-            numberLemons = 0; 
-            numberSugar = 0; 
-            numberCups = 0;
-            numberIce = 0;
+            numberLemons = 100; 
+            numberSugar = 100; 
+            numberCups = 100;
+            numberIce = 100;
             pricePerCup = 0.25;
-            recipe = new Dictionary<string, int> { { "Lemons", 0 }, {"Sugar", 0 }, {"Cups", 0 }, {"Ice", 0 } };
+            recipe = new Dictionary<string, int> { { "Lemons", 8 }, {"Sugar", 8 }, {"Cups", 8 }, {"Ice", 10 } };
         }
 
         public void BuyProduct(string currentProduct, int productField, double storePrice)
@@ -60,7 +60,7 @@ namespace LemonadeStandGame
             bool condition = true;
             while (condition)
             {
-                Console.WriteLine("Your current recipe for lemonade is:");
+                Console.WriteLine("Your current recipe for a pitcher of lemonade is:");
                 foreach (KeyValuePair<string, int> kvp in recipe)
                 {
                     Console.WriteLine("{1} {0}", kvp.Key, kvp.Value);
@@ -90,7 +90,7 @@ namespace LemonadeStandGame
         public void SetPrice()
         {
             List<char> yNOptions = new List<char> { 'y', 'n' };
-            char yesNo = UserInterface.ValidateCharInput($"Your lemonade currently costs ${pricePerCup} per cup. Would you like to adjust your price? y/n", yNOptions);
+            char yesNo = UserInterface.ValidateCharInput($"Your lemonade currently costs ${UserInterface.FormatDouble(pricePerCup)} per cup. Would you like to adjust your price? y/n", yNOptions);
             if (yesNo == 'y')
             {
                 pricePerCup = UserInterface.ValidateDoubleInput("What price would you like to make each cup?");

@@ -17,11 +17,11 @@ namespace LemonadeStandGame
             trueFalse = new List<bool>{ true, false};
         }
 
-        public bool PurchaseLemonade()
+        public bool PurchaseLemonade(double lemonadePrice)
         {
-            CustomerInterface.RandomizeCustomer();
+            CustomerInterface.RandomizeCustomer(lemonadePrice);
             return trueFalse[rand.Next(trueFalse.Count)];
         }
-        
+
     }
 }

@@ -4,28 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace LemonadeStandGame
 {
     internal class Game
     {
         public Player player;
+        public string[] daysOfWeek;
 
         public Game()
         {
             //Console.WriteLine("Please enter your username:");
             //string username = Console.ReadLine();
             player = new Player("Lizzie");
+            daysOfWeek = new string[7] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         }
 
         public void RunGame()
         {
             DisplayWelcome();
-            RunEachDay(); //add for loop to run this method 7 days
+            for (int i = 0; i < 2; i++)
+            {
+                RunEachDay(i-1);
+            }
+            
         }
 
-        public void RunEachDay()
+        public void RunEachDay(int dayIndex)
         {
-            Console.WriteLine(WeatherPrediction.Forecast());
+            if (dayIndex == -1)
+            {
+                Console.WriteLine("Today is Sunday");
+            }
+            else
+            {
+                Console.WriteLine($"Today is {daysOfWeek[dayIndex]}");
+            }
+            Console.WriteLine(WeatherPrediction.Forecast(daysOfWeek[dayIndex+1]));
             RunPurchases();
             player.SetRecipe();
             player.SetPrice();

@@ -35,11 +35,11 @@ namespace LemonadeStandGame
             return conditions[index];
         }
 
-        public static string Forecast()
+        public static string Forecast(string tomorrow)
         {
             predictionTemp = GetTemperature(65, 87);
             weatherCond = GetConditions();
-            return $"Tomorrow's conditions are forecasted to be {predictionTemp} and {weatherCond}";
+            return $"{tomorrow}'s conditions are forecasted to be {predictionTemp} and {weatherCond}";
         }
 
         public static string ActualWeather()

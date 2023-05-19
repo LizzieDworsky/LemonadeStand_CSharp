@@ -11,7 +11,7 @@ namespace LemonadeStandGame
         private static Random rand = new Random();
         
 
-        public static void RandomizeCustomer()
+        public static void RandomizeCustomer(double lemonadePrice)
         {
             int customerProbability = 0;
             int number = rand.Next(2);
