@@ -44,6 +44,8 @@ namespace LemonadeStandGame
             RunPurchases();
             player.SetRecipe();
             player.SetPrice();
+            int totalCupsPossible = player.MakeLemonade();
+            player.UnmakeLemonade();
             Console.WriteLine(WeatherPrediction.ActualWeather());
             CreateCustomersBuyLemonade(WeatherPrediction.weatherCond, WeatherPrediction.actualTemp);
         }

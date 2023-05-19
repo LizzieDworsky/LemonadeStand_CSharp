@@ -14,6 +14,7 @@ namespace LemonadeStandGame
         public int numberSugar;
         public int numberCups;
         public int numberIce;
+        public int numberOfPitchers;
         public double pricePerCup;
         public Dictionary<string, int> recipe;
 
@@ -27,6 +28,38 @@ namespace LemonadeStandGame
             numberIce = 100;
             pricePerCup = 0.25;
             recipe = new Dictionary<string, int> { { "Lemons", 8 }, {"Sugar", 8 }, {"Cups", 8 }, {"Ice", 10 } };
+        }
+
+        public void UnmakeLemonade()
+        {
+            while (numberOfPitchers > 0)
+            {
+                numberLemons += recipe["Lemons"];
+                numberSugar += recipe["Sugar"];
+                numberCups += recipe["Cups"];
+                numberIce += recipe["Ice"];
+                numberOfPitchers -= 1;
+            }
+        }
+
+        public int MakeLemonade()
+        {
+            while (true)
+            {
+                if (numberLemons >= recipe["Lemons"] && numberSugar >= recipe["Sugar"] && numberCups >= recipe["Cups"] && numberIce >= recipe["Ice"])
+                {
+                    numberLemons -= recipe["Lemons"];
+                    numberSugar -= recipe["Sugar"];
+                    numberCups -= recipe["Cups"];
+                    numberIce -= recipe["Ice"];
+                    numberOfPitchers += 1;
+                }
+                else
+                {
+                    int totalCups = numberOfPitchers * recipe["Cups"];
+                    return totalCups;
+                }
+            }
         }
 
         public void BuyProduct(string currentProduct, int productField, double storePrice)
