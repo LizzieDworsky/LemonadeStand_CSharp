@@ -10,6 +10,7 @@ namespace LemonadeStandGame
     {
         public string username;
         public double money;
+        public double todaysMoney;
         public int numberLemons;
         public int numberSugar;
         public int numberCups;
@@ -30,6 +31,8 @@ namespace LemonadeStandGame
             recipe = new Dictionary<string, int> { { "Lemons", 8 }, {"Sugar", 8 }, {"Cups", 8 }, {"Ice", 10 } };
         }
 
+
+
         public void UnmakeLemonade()
         {
             while (numberOfPitchers > 0)
@@ -42,7 +45,7 @@ namespace LemonadeStandGame
             }
         }
 
-        public int MakeLemonade()
+        public void MakeLemonade()
         {
             while (true)
             {
@@ -56,10 +59,22 @@ namespace LemonadeStandGame
                 }
                 else
                 {
-                    int totalCups = numberOfPitchers * recipe["Cups"];
-                    return totalCups;
+                    break;
                 }
             }
+        }
+
+
+
+        public int SellLemonade(bool willBuy, int currentCups)
+        {
+            if (willBuy == true)
+            {
+                currentCups -= 1;
+                todaysMoney += pricePerCup;
+                Console.WriteLine($"Customer bought a cup for ${UserInterface.FormatDouble(pricePerCup)}.");
+            }
+            return currentCups;
         }
 
         public void BuyProduct(string currentProduct, int productField, double storePrice)

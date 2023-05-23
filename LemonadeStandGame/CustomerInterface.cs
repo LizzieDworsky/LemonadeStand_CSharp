@@ -43,6 +43,18 @@ namespace LemonadeStandGame
             {
                 customerProbability += rand.Next(15, 20);
             }
+            if (lemonadePrice < .35)
+            {
+                customerProbability += rand.Next(30, 40);
+            }
+            else if (lemonadePrice > 1)
+            {
+                customerProbability -= rand.Next(30, 40);
+            }
+            else
+            {
+                customerProbability += rand.Next(10, 20);
+            }
             return customerProbability;
         }
 

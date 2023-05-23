@@ -16,9 +16,9 @@ namespace LemonadeStandGame
 
         public static void SetPrices()
         {
-            lemonCost = rand.Next(15, 76) / 100.0;
-            sugarCost = rand.Next(100, 120) / 100.0;
-            cupCost = rand.Next(5, 15) / 100.0;
+            lemonCost = rand.Next(15, 51) / 100.0;
+            sugarCost = rand.Next(50, 76) / 100.0;
+            cupCost = rand.Next(5, 13) / 100.0;
             iceCost = rand.Next(5, 8) / 100.0;
             DisplayPrices();
         }

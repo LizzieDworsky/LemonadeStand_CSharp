@@ -44,38 +44,31 @@ namespace LemonadeStandGame
             RunPurchases();
             player.SetRecipe();
             player.SetPrice();
-            int totalCupsPossible = player.MakeLemonade();
-            player.UnmakeLemonade();
+            player.MakeLemonade();
             Console.WriteLine(WeatherPrediction.ActualWeather());
             CreateCustomersBuyLemonade(WeatherPrediction.weatherCond, WeatherPrediction.actualTemp);
+            player.UnmakeLemonade();
         }
 
         private void CreateCustomersBuyLemonade(string weatherCondition, int weatherTemp)
         {
-            if (weatherCondition == "rainy" || weatherCondition == "stormy")
+            player.todaysMoney = 0;
+            int counter = 0;
+            while (player.numberOfPitchers > 0 && counter < 16)
             {
-                for (int i = 0; i < 6; i++)
+                int cupsToSell = player.recipe["Cups"];
+                while (cupsToSell > 0 && counter < 101)
                 {
                     Customer customer = new Customer();
-                    Console.WriteLine(customer.PurchaseLemonade(player.pricePerCup, weatherTemp, weatherCondition));
+                    bool isBuying = customer.WillBuyLemonade(player.pricePerCup, weatherTemp, weatherCondition);
+                    cupsToSell = player.SellLemonade(isBuying, cupsToSell);
+                    counter++;
                 }
+                player.numberOfPitchers -= 1;
             }
-            else if (weatherCondition == "cloudy" || weatherCondition == "windy")
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    Customer customer = new Customer();
-                    Console.WriteLine(customer.PurchaseLemonade(player.pricePerCup, weatherTemp, weatherCondition));
-                }
-            }
-            else
-            {
-                for (int i = 0; i < 16; i++)
-                {
-                    Customer customer = new Customer();
-                    Console.WriteLine(customer.PurchaseLemonade(player.pricePerCup, weatherTemp, weatherCondition));
-                }
-            }
+            player.money += player.todaysMoney;
+            Console.WriteLine($"Today you made ${UserInterface.FormatDouble(player.todaysMoney)}.\nYou now have ${UserInterface.FormatDouble(player.money)}");
+
         }
 
         private void DisplayWelcome()
